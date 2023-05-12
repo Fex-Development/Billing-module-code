@@ -13,7 +13,7 @@ paypal.configure({
 
 module.exports.load = async function(app, db) {
   app.get("/paypal", async(req, res) => {
-    if(!req.session.pterodactyl) return res.redirect("/paypal?error=invalidinfo"
+    if(!req.session.pterodactyl) return res.redirect("/paypal?error=invalidinfo")
 
     let payment = {
       "intent": "sale",
@@ -40,7 +40,7 @@ module.exports.load = async function(app, db) {
 
     paypal.payment.create(payment, async function (error, payment) {
       if (error) {
-        return res.redirect("/paypal?error=invalid"
+        return res.redirect("/paypal?error=invalid")
       } else {
         const execute_payment_json = {
           "payer_id": payment.payer.payer_info.payer_id,
@@ -66,13 +66,3 @@ module.exports.load = async function(app, db) {
     });
   });
 };
-
-function `(length) {
-  let result = '';
-  let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-}
