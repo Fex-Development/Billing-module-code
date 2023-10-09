@@ -39,8 +39,8 @@ module.exports.load = async function(app, db) {
       if(error) {
         return res.redirect("/razor?error=e"
       } else {
-        let ccoins = await db.get(`coins-${req.session.userinfo.id}`)
-        ccoins += settings.razorpay.coins * req.query.amt;
+        let coins = await db.get(`coins-${req.session.userinfo.id}`)
+        coins += settings.razorpay.coins * req.query.amt;
         await db.set(`coins-${req.session.userinfo.id}`, coins)
         return res.redirect("/razor?success=e"
       }
