@@ -1,4 +1,5 @@
 # Billing-module-code
+# Reached EOL
 Billing module addons for dashactyl.
 
 ## Warning!!!
